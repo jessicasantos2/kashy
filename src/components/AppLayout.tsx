@@ -3,8 +3,10 @@ import { AppSidebar } from "@/components/AppSidebar";
 import { MobileBottomNav } from "@/components/MobileBottomNav";
 import { Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { useTheme } from "@/hooks/use-theme";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useProfile } from "@/hooks/useProfile";
 import kashyLogo from "@/assets/kashy-logo.png";
 
 export function AppLayout({ children }: { children: React.ReactNode }) {
