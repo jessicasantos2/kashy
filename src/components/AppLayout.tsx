@@ -7,12 +7,14 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { useTheme } from "@/hooks/use-theme";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useProfile } from "@/hooks/useProfile";
+import { useNavigate } from "react-router-dom";
 import kashyLogo from "@/assets/kashy-logo.png";
 
 export function AppLayout({ children }: { children: React.ReactNode }) {
   const { theme, toggleTheme } = useTheme();
   const isMobile = useIsMobile();
   const { profile } = useProfile();
+  const navigate = useNavigate();
 
   const initials = profile?.display_name
     ? profile.display_name.slice(0, 2).toUpperCase()
@@ -37,7 +39,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
                 {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
               </Button>
               {isMobile && (
-                <Avatar className="h-9 w-9 border-2 border-primary/30">
+                <Avatar className="h-9 w-9 border-2 border-primary/30 cursor-pointer" onClick={() => navigate("/configuracoes")}>
                   <AvatarImage src={profile?.avatar_url || undefined} alt={profile?.display_name || "Avatar"} />
                   <AvatarFallback className="bg-primary/10 text-primary text-xs font-semibold">{initials}</AvatarFallback>
                 </Avatar>
