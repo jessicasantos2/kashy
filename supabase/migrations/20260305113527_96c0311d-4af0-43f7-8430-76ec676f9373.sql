@@ -1,0 +1,1 @@
+ALTER TABLE public.salaries ADD COLUMN account text DEFAULT NULL;

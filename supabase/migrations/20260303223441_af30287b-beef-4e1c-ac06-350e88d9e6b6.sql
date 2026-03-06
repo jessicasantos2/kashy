@@ -1,0 +1,1 @@
+ALTER TABLE public.transactions ADD COLUMN IF NOT EXISTS generated_from_recurrence uuid REFERENCES public.recurrences(id) ON DELETE SET NULL;

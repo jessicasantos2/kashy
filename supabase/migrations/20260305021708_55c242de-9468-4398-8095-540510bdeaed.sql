@@ -1,0 +1,1 @@
+ALTER TABLE public.person_transactions ADD COLUMN type text NOT NULL DEFAULT 'divida_pessoa';

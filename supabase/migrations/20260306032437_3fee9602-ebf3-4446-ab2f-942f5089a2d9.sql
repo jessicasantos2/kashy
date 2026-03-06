@@ -1,0 +1,2 @@
+ALTER TABLE public.categories ADD COLUMN IF NOT EXISTS icon text NOT NULL DEFAULT 'tag';
+ALTER TABLE public.categories ADD COLUMN IF NOT EXISTS color text NOT NULL DEFAULT '#6366f1';

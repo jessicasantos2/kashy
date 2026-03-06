@@ -1,0 +1,4 @@
+project_id = "zailxxhpybcfupenpvsn"
+
+[functions.generate-recurring-transactions]
+verify_jwt = false

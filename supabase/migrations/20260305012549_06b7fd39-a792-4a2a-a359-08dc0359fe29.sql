@@ -1,0 +1,1 @@
+ALTER TABLE public.debts ADD COLUMN date date DEFAULT CURRENT_DATE;
