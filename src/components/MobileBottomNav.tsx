@@ -10,11 +10,8 @@ import {
   HandCoins,
   Building2,
   BarChart3,
-  Settings,
   RefreshCw,
   Upload,
-  LogOut,
-  ShieldCheck,
   CalendarRange,
 } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
@@ -24,7 +21,6 @@ import { MobileQuickAdd } from "@/components/MobileQuickAdd";
 import { useBudgets } from "@/hooks/useBudgets";
 import { useAuth } from "@/hooks/useAuth";
 import { useProfile } from "@/hooks/useProfile";
-import { useAdmin } from "@/hooks/useAdmin";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import {
   Drawer,
