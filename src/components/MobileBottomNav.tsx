@@ -57,7 +57,6 @@ const allPages = [
   { title: "Importar", url: "/importar", icon: Upload },
   { title: "Planejamento", url: "/planejamento", icon: CalendarRange },
   { title: "Relatórios", url: "/relatorios", icon: BarChart3 },
-  { title: "Configurações", url: "/configuracoes", icon: Settings },
 ];
 
 export function MobileBottomNav() {
