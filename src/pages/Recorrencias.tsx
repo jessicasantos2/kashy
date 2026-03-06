@@ -13,7 +13,7 @@ import { CategoryBadge } from "@/components/CategoryBadge";
 
 const Recorrencias = () => {
   const isMobile = useIsMobile();
-  const { recurrences, loading, addRecurrence, deleteRecurrence } = useRecurrences();
+  const { recurrences, loading, add: addRecurrence, remove: deleteRecurrence } = useRecurrences();
   const { categories } = useCategories();
   const [dialogOpen, setDialogOpen] = useState(false);
   const [form, setForm] = useState({
