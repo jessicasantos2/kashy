@@ -20,7 +20,7 @@ const MONTHS_LABEL = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "S
 const Transacoes = () => {
   const isMobile = useIsMobile();
   const now = new Date();
-  const { transactions, loading, addTransaction, deleteTransaction, updateTransaction, togglePaid } = useTransactions();
+  const { transactions, loading, add: addTransaction, remove: deleteTransaction, update: updateTransaction, togglePaid } = useTransactions();
   const { accounts } = useAccounts();
   const { cards } = useCreditCards();
   const { people } = usePeople();
