@@ -79,7 +79,6 @@ const Transacoes = () => {
       account: form.account || null,
       card: form.card || null,
       person: form.person || null,
-      paid: form.paid,
     });
     setForm({ description: "", value: "", type: "despesa", category: "Outros", date: new Date().toISOString().slice(0, 10), account: "", card: "", person: "", paid: true });
     setDialogOpen(false);

@@ -3,11 +3,11 @@ import { useTransactions } from "@/hooks/useTransactions";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { formatCurrency } from "@/data/financialData";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { CategoryChart } from "@/components/CategoryChart";
-import { MonthlyChart } from "@/components/MonthlyChart";
 import { Loader2 } from "lucide-react";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
 
 const MONTHS_LABEL = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
+const COLORS = ["hsl(160 84% 39%)", "hsl(200 80% 50%)", "hsl(38 92% 50%)", "hsl(280 60% 55%)", "hsl(0 72% 51%)", "hsl(160 40% 60%)", "hsl(220 60% 50%)", "hsl(30 80% 55%)"];
 
 const Relatorios = () => {
   const isMobile = useIsMobile();
@@ -88,14 +88,47 @@ const Relatorios = () => {
       {/* Monthly Chart */}
       <div className="rounded-lg bg-card border border-border/50 p-4">
         <h2 className="text-sm font-semibold mb-3">Receitas x Despesas por Mês</h2>
-        <MonthlyChart data={monthlyData} />
+        <div className="h-[250px]">
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart data={monthlyData}>
+              <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} />
+              <XAxis dataKey="name" tick={{ fontSize: 11 }} />
+              <YAxis tick={{ fontSize: 11 }} tickFormatter={v => `${(v / 1000).toFixed(0)}k`} />
+              <Tooltip formatter={(v: number) => formatCurrency(v)} />
+              <Bar dataKey="receitas" fill="hsl(160 84% 39%)" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="despesas" fill="hsl(0 72% 51%)" radius={[4, 4, 0, 0]} />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
       </div>
 
       {/* Category Chart */}
       <div className="rounded-lg bg-card border border-border/50 p-4">
         <h2 className="text-sm font-semibold mb-3">Despesas por Categoria</h2>
         {categoryData.length > 0 ? (
-          <CategoryChart data={categoryData} />
+          <div className="flex flex-col md:flex-row items-center gap-4">
+            <div className="h-[200px] w-[200px]">
+              <ResponsiveContainer width="100%" height="100%">
+                <PieChart>
+                  <Pie data={categoryData} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={80}>
+                    {categoryData.map((_, i) => (
+                      <Cell key={i} fill={COLORS[i % COLORS.length]} />
+                    ))}
+                  </Pie>
+                  <Tooltip formatter={(v: number) => formatCurrency(v)} />
+                </PieChart>
+              </ResponsiveContainer>
+            </div>
+            <div className="space-y-1 flex-1">
+              {categoryData.map((c, i) => (
+                <div key={c.name} className="flex items-center gap-2 text-sm">
+                  <span className="w-3 h-3 rounded-full shrink-0" style={{ backgroundColor: COLORS[i % COLORS.length] }} />
+                  <span className="flex-1 truncate">{c.name}</span>
+                  <span className="font-medium">{formatCurrency(c.value)}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         ) : (
           <p className="text-center text-muted-foreground py-4">Sem dados de despesas.</p>
         )}
