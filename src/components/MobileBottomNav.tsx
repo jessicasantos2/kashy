@@ -59,9 +59,8 @@ export function MobileBottomNav() {
   const [quickAddOpen, setQuickAddOpen] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const { budgets } = useBudgets();
-  const { user, signOut } = useAuth();
+  const { user } = useAuth();
   const { profile } = useProfile();
-  const { isAdmin } = useAdmin();
   const navigate = useNavigate();
   const location = useLocation();
   const hasOverBudget = budgets.some((b) => b.percent >= 100);
