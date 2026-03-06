@@ -29,16 +29,16 @@ Deno.serve(async (req) => {
     const anonClient = createClient(supabaseUrl, supabaseAnonKey, {
       global: { headers: { Authorization: authHeader } },
     });
-    const { data: { user }, error: authError } = await anonClient.auth.getUser(token);
+    const { data: claimsData, error: claimsError } = await anonClient.auth.getClaims(token);
 
-    if (authError || !user) {
+    if (claimsError || !claimsData?.claims) {
       return new Response(JSON.stringify({ error: "Unauthorized" }), {
         status: 401,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
 
-    const scopeUserId = user.id;
+    const scopeUserId = claimsData.claims.sub;
 
     // ── Determine target month ──
     let targetMonth: string | undefined;
