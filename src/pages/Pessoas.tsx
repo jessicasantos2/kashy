@@ -87,16 +87,14 @@ const Pessoas = () => {
 
   const MonthNavigator = () => (
     <div className="flex items-center gap-2">
-      <Button variant={showAllMonths ? "default" : "outline"} size="sm" className="h-8 text-xs" onClick={() => setShowAllMonths(!showAllMonths)}>
-        {showAllMonths ? "Todos os meses" : "Filtrar mês"}
+      <Button variant="outline" size="icon" className="h-8 w-8" onClick={prevMonth} disabled={showAllMonths}><ChevronLeft className="w-4 h-4" /></Button>
+      <span className={`text-sm font-medium min-w-[140px] text-center ${showAllMonths ? "text-muted-foreground" : ""}`}>
+        {showAllMonths ? "Todos os meses" : `${monthNames[filterMonth]} ${filterYear}`}
+      </span>
+      <Button variant="outline" size="icon" className="h-8 w-8" onClick={nextMonth} disabled={showAllMonths}><ChevronRight className="w-4 h-4" /></Button>
+      <Button variant={showAllMonths ? "default" : "outline"} size="sm" className="h-8 text-xs ml-1" onClick={() => setShowAllMonths(!showAllMonths)}>
+        Todos
       </Button>
-      {!showAllMonths && (
-        <>
-          <Button variant="outline" size="icon" className="h-8 w-8" onClick={prevMonth}><ChevronLeft className="w-4 h-4" /></Button>
-          <span className="text-sm font-medium min-w-[140px] text-center">{monthNames[filterMonth]} {filterYear}</span>
-          <Button variant="outline" size="icon" className="h-8 w-8" onClick={nextMonth}><ChevronRight className="w-4 h-4" /></Button>
-        </>
-      )}
     </div>
   );
 
