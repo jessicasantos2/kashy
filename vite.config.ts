@@ -21,7 +21,8 @@ export default defineConfig(({ mode }) => ({
       includeAssets: ["favicon.png", "pwa-192x192.png", "pwa-512x512.png"],
       workbox: {
         navigateFallbackDenylist: [/^\/~oauth/],
-        globPatterns: ["**/*.{js,css,html,ico,png,svg,woff2}"],
+        globPatterns: ["**/*.{js,css,html,ico,png,svg}"],
+        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
       },
       manifest: {
         name: "Kashy — Gestão Financeira",
