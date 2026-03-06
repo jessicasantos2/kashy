@@ -17,12 +17,12 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
         {/* Sidebar: hidden on mobile, visible on tablet/desktop */}
         {!isMobile && <AppSidebar />}
         <div className="flex-1 flex flex-col min-w-0">
-          <header className="h-12 flex items-center justify-between border-b border-border/50 bg-card/50 backdrop-blur-xl sticky top-0 z-50 px-4">
+          <header className={`${isMobile ? 'h-20' : 'h-12'} flex items-center justify-between border-b border-border/50 bg-card/50 backdrop-blur-xl sticky top-0 z-50 px-4`}>
             {!isMobile && <SidebarTrigger />}
             {isMobile && (
-              <div className="flex items-center gap-2">
-                <img src={kashyLogo} alt="Kashy" className="w-7 h-7 min-w-[28px] min-h-[28px] rounded-lg object-contain" />
-                <span className="text-sm font-bold tracking-tight">Kashy</span>
+              <div className="flex items-center gap-3">
+                <img src={kashyLogo} alt="Kashy" className="w-9 h-9 min-w-[36px] min-h-[36px] rounded-lg object-contain" />
+                <span className="text-base font-bold tracking-tight">Kashy</span>
               </div>
             )}
             <Button variant="ghost" size="icon" onClick={toggleTheme} className="h-8 w-8">
