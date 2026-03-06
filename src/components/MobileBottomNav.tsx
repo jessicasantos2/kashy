@@ -162,34 +162,6 @@ export function MobileBottomNav() {
             })}
           </div>
 
-          {/* Admin link */}
-          {isAdmin && (
-            <div className="px-2 pt-1">
-              <button
-                onClick={() => { navigate("/admin"); setDrawerOpen(false); }}
-                className={`w-full flex items-center gap-3 px-3 py-3 rounded-lg text-left transition-colors ${
-                  location.pathname === "/admin" ? "bg-sidebar-accent text-sidebar-accent-foreground font-semibold border-l-[3px] border-primary" : "text-foreground hover:bg-muted/50"
-                }`}
-              >
-                <ShieldCheck className="h-5 w-5 shrink-0" />
-                <span className="text-sm">Admin</span>
-              </button>
-            </div>
-          )}
-
-          {/* Logout */}
-          <div className="px-2 py-3 border-t border-border/50">
-            <button
-              onClick={() => {
-                signOut();
-                setDrawerOpen(false);
-              }}
-              className="w-full flex items-center gap-3 px-3 py-3 rounded-lg text-destructive hover:bg-destructive/10 transition-colors"
-            >
-              <LogOut className="h-5 w-5 shrink-0" />
-              <span className="text-sm font-medium">Sair</span>
-            </button>
-          </div>
         </DrawerContent>
       </Drawer>
 
