@@ -128,7 +128,7 @@ const Recorrencias = () => {
                 <p className="text-sm font-medium truncate">{r.name}</p>
                 <div className="flex items-center gap-1.5 mt-0.5">
                   <span className="text-[10px] text-muted-foreground">Dia {r.day_of_month}</span>
-                  <CategoryBadge category={r.category} />
+                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-muted text-muted-foreground">{r.category}</span>
                 </div>
               </div>
               <span className={`text-sm font-semibold ${r.target === "receita" ? "text-emerald-500" : "text-red-500"}`}>

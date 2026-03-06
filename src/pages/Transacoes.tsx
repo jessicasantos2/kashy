@@ -237,7 +237,7 @@ const Transacoes = () => {
                 <p className={`text-sm font-medium truncate ${!t.paid ? "text-muted-foreground" : ""}`}>{t.description}</p>
                 <div className="flex items-center gap-1.5 mt-0.5">
                   <span className="text-[10px] text-muted-foreground">{new Date(t.date + "T12:00:00").toLocaleDateString("pt-BR")}</span>
-                  <CategoryBadge category={t.category} />
+                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-muted text-muted-foreground">{t.category}</span>
                   {t.account && <Badge variant="outline" className="text-[9px] px-1 py-0">{t.account}</Badge>}
                 </div>
               </div>
