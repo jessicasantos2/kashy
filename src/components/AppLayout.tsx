@@ -12,6 +12,11 @@ import kashyLogo from "@/assets/kashy-logo.png";
 export function AppLayout({ children }: { children: React.ReactNode }) {
   const { theme, toggleTheme } = useTheme();
   const isMobile = useIsMobile();
+  const { profile } = useProfile();
+
+  const initials = profile?.display_name
+    ? profile.display_name.slice(0, 2).toUpperCase()
+    : "?";
 
   return (
     <SidebarProvider>
@@ -27,9 +32,17 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
                 <span className="text-base font-bold tracking-tight">Kashy</span>
               </div>
             )}
-            <Button variant="ghost" size="icon" onClick={toggleTheme} className="h-8 w-8">
-              {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-            </Button>
+            <div className="flex items-center gap-2">
+              <Button variant="ghost" size="icon" onClick={toggleTheme} className="h-8 w-8">
+                {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+              </Button>
+              {isMobile && (
+                <Avatar className="h-9 w-9 border-2 border-primary/30">
+                  <AvatarImage src={profile?.avatar_url || undefined} alt={profile?.display_name || "Avatar"} />
+                  <AvatarFallback className="bg-primary/10 text-primary text-xs font-semibold">{initials}</AvatarFallback>
+                </Avatar>
+              )}
+            </div>
           </header>
           <main className={`flex-1 p-4 md:p-6 overflow-auto ${isMobile ? "pb-20" : ""}`}>
             {children}
