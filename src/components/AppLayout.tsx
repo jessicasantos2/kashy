@@ -14,6 +14,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
   const { theme, toggleTheme } = useTheme();
   const isMobile = useIsMobile();
   const { profile } = useProfile();
+  const navigate = useNavigate();
 
   const initials = profile?.display_name
     ? profile.display_name.slice(0, 2).toUpperCase()
